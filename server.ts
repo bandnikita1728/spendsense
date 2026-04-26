@@ -140,24 +140,10 @@ app.get("/api/expenses/summary", (req, res) => {
 export async function startServer() {
   // Vite / Static logic
   if (process.env.NODE_ENV !== "production") {
-    const { createServer: createViteServer, loadEnv } = await import("vite");
-    const react = (await import("@vitejs/plugin-react")).default;
-    const tailwindcss = (await import("@tailwindcss/vite")).default;
-
-    const env = loadEnv("development", process.cwd(), "");
+    const { createServer: createViteServer } = await import("vite");
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
-      configFile: false, // Bypass external config file to avoid Windows tsx/Vite load issues
-      plugins: [react(), tailwindcss()],
-      define: {
-        "process.env.GEMINI_API_KEY": JSON.stringify(env.GEMINI_API_KEY),
-      },
-      resolve: {
-        alias: {
-          "@": process.cwd(),
-        },
-      },
     });
     app.use(vite.middlewares);
   } else {
