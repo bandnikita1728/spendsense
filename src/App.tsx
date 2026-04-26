@@ -50,10 +50,10 @@ export default function App() {
 
   // Idempotency Key Persistence (survives page refresh during submission)
   const [draftId, setDraftId] = useState(() => {
-    const saved = sessionStorage.getItem("spendSense_draftId");
+    const saved = sessionStorage.getItem("kharcha_draftId");
     if (saved) return saved;
     const newId = uuidv4();
-    sessionStorage.setItem("spendSense_draftId", newId);
+    sessionStorage.setItem("kharcha_draftId", newId);
     return newId;
   });
 
@@ -189,7 +189,7 @@ export default function App() {
       // Successfully processed: cycle the draftId for next entry
       const nextId = uuidv4();
       setDraftId(nextId);
-      sessionStorage.setItem("spendSense_draftId", nextId);
+      sessionStorage.setItem("kharcha_draftId", nextId);
 
       // Refresh categories list in case a new one was added
       fetchCategories();
@@ -230,7 +230,7 @@ export default function App() {
           <div className="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center text-white">
             <Wallet className="w-6 h-6" />
           </div>
-          <h1 className="text-xl font-bold tracking-tight text-slate-800">LedgerPro</h1>
+          <h1 className="text-xl font-bold tracking-tight text-slate-800">Kharcha</h1>
         </div>
 
         <div className="p-6 flex-1 overflow-y-auto custom-scrollbar">
