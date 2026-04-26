@@ -1,5 +1,5 @@
 {
-  "name": "Kharcha",
+  "name": "SpendSense",
   "description": "A minimal full-stack expense tracker with idempotency, filtering, and sorting capabilities.",
   "requestFramePermissions": [],
   "majorCapabilities": []
